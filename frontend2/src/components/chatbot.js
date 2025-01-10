@@ -60,14 +60,14 @@ return (
 <div >
     
     {/*  chatbot icon button */}
-    <button onClick={toggleChat} className='bg-[#ec6e59;] p-4 fixed bottom-16 right-10 border rounded-lg shadow-lg'>
+    <button onClick={toggleChat} className='bg-[#2e8b57;] p-4 fixed bottom-16 right-10 border rounded-lg shadow-lg'>
     <AiFillRobot size={40} className="cursor-pointer"/>
     </button>
 
     {isChatOpen && (
-        <div className="fixed bottom-16 right-4 h-3/5 max-[670px]:w-3/4 w-150 bg-white border rounded-lg shadow-lg">
+        <div className="fixed bottom-16 right-4 h-3/5 max-[670px]:w-3/4 w-[30%] bg-white border rounded-lg shadow-lg">
           {/* Chatbox header with close button */}
-          <div className="flex justify-between items-center p-2 bg-[#ec6e59;] text-white">
+          <div className="flex justify-between items-center p-2 bg-[#2e8b57;] text-white">
             <h3>Razi AI Assistant</h3>
             <button onClick={toggleChat} className="text-white text-2xl">
               &times;
@@ -78,14 +78,14 @@ return (
           
           <div className="flex flex-col p-4 overflow-y-scroll h-4/6">
             {messages.map((message,index)=>(
-                <p key={index} className={`text-white rounded-lg p-1 mb-3 max-w-xs ${message.type==='user'?'bg-black ml-3 self-end':"bg-[#ec6e59;] mr-3 self-start"}`}>{message.text}</p>
+                <p key={index} className={`text-white rounded-lg p-1 mb-3 max-w-xs ${message.type==='user'?'bg-black ml-3 self-end':"bg-[#2e8b57;] mr-3 self-start"}`}>{message.text}</p>
             ))}        
           </div>
           
           {/* text area and button */}
-          <div className='fixed bottom-16 z-20 p-4 flex flex-row item-center justify-center'>
+          <div className='max-[670px]:w-[70%] w-[28%] fixed bottom-16 z-20 pl-4 pb-4 flex flex-row item-center justify-center'>
             
-            <textarea className='w-full max-[670px]:w-4/5 rounded-md p-1 shadow-md mr-[0.5rem]' type='text' 
+            <textarea className='w-full rounded-md p-1 shadow-md mr-[0.5rem]' type='text' 
             name='userInput' value={userInput} onChange={(e)=>setUserInput(e.target.value)}
             placeholder='Ask a question...' onKeyUp={handleKeyPress}/>
             

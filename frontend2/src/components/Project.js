@@ -51,7 +51,7 @@ function Projects({project=[]}) {
       }
     
       return (
-        <div id="projects" className='sm:pl-[8rem] p-8 mx-7 mt-4 sm:mt-0 sm:pt-16 pb-20 sm:px-4 sm:py-0'>
+        <div id="projects" className='sm:pl-[4rem] p-4 mx-7 mt-4 sm:mt-0 sm:pt-16 pb-20 sm:px-4 sm:py-0'>
             <div>
             <h1 className='w-72 mb-8 tracking-wider font-semibold text-2xl sm:text-2xl md:text-2xl lg:text-2.5xl'>
               Projects
@@ -68,7 +68,7 @@ function Projects({project=[]}) {
               <h2 className="text-xl text-center font-semibold mt-4">{p.title}</h2>
               
               <div className="flex justify-center items-center">
-              <ul className={`w-[90%] sm:w-[80%] font-light text-custom-18 h-[20%] leading-relaxed text-sm dark:text-[#ccc] pt-3${expanded[p.id] ? "" : "line-clamp-2 overflow-hidden text-ellipsis"}`}>
+              <ul className={`w-[90%] sm:w-[80%] font-light text-custom-18 leading-relaxed text-sm dark:text-[#ccc] pt-3${expanded[p.id] ? "h-[130px]" : "line-clamp-2 overflow-hidden text-ellipsis h-max"}`}>
               {p.description
                 .split('\n')
                 .slice(0, expanded[p.id] ? p.description.split('\n').length : 2) // Show 2 items if not expanded, else show all
@@ -84,7 +84,7 @@ function Projects({project=[]}) {
               
               <div className='w-full flex justify-center items-center gap-4 relative mt-4 '>
               <a href={p.url} target="_blank" rel="noopener noreferrer" 
-                className=" px-4 bg-[#ec6e59] text-white rounded-lg no-underline hover:no-underline">
+                className=" px-4 bg-[#2e8b57] text-white rounded-lg no-underline hover:no-underline">
                 Demo
               </a>
               <button

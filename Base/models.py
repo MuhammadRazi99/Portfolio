@@ -14,6 +14,8 @@ class Experience(models.Model):
     duration=models.CharField(max_length=50)
     description=models.TextField()
     ordinal=models.IntegerField()
+    class Meta:
+        ordering=['ordinal']
 
 class Project(models.Model):
     title=models.CharField(max_length=100)

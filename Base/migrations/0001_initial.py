@@ -12,22 +12,23 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Achivement',
+            name='Achievement',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=200)),
                 ('description', models.TextField()),
-                ('image', models.ImageField(upload_to='uploads/')),
+                ('image', models.ImageField(null=True, upload_to='uploads/')),
                 ('ordinal', models.IntegerField()),
             ],
         ),
         migrations.CreateModel(
-            name='Certifate',
+            name='Certificate',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=100)),
-                ('company', models.CharField(max_length=100)),
+                ('issuer', models.CharField(max_length=100)),
                 ('url', models.URLField()),
+                ('image',models.ImageField(null=True, upload_to='uploads/')),
                 ('ordinal', models.IntegerField()),
             ],
         ),
@@ -46,8 +47,9 @@ class Migration(migrations.Migration):
             name='Experience',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('title',models.CharField(max_length=100, null=True)),
                 ('company', models.CharField(max_length=100)),
-                ('years', models.CharField(max_length=25)),
+                ('duration', models.CharField(max_length=50)),
                 ('description', models.TextField()),
                 ('ordinal', models.IntegerField()),
             ],
@@ -59,7 +61,7 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=100)),
                 ('description', models.TextField()),
                 ('image', models.ImageField(upload_to='uploads/')),
-                ('url', models.URLField()),
+                ('url', models.URLField(null=True)),
                 ('ordinal', models.IntegerField()),
             ],
         ),

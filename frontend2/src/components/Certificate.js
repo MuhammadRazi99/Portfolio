@@ -3,6 +3,8 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from "react-slick";
 
+
+// primary color = #2e8b57
 const Certificate = ({ certificate=[]}) => {
   const settings = {
     dots: true,
@@ -39,7 +41,7 @@ const Certificate = ({ certificate=[]}) => {
   }
 
   return (
-    <div id="certificates" className='sm:pl-[8rem] p-8 mx-7 mt-4 sm:mt-0 sm:pt-16 pb-20 sm:px-4 sm:py-0'>
+    <div id="certificates" className='sm:pl-[4rem] p-4 mx-7 mt-4 sm:mt-0 sm:pt-16 pb-20 sm:px-4 sm:py-0'>
         <div>
         <h1 className='w-72 mb-8 tracking-wider font-semibold text-2xl sm:text-2xl md:text-2xl lg:text-2.5xl'>
           Certificates
@@ -55,7 +57,7 @@ const Certificate = ({ certificate=[]}) => {
           <h3 className='text-sm text-center my-1 dark:text-[#ccc]'>{c.issuer}</h3>
           <div className='w-full flex justify-center'>
           <a href={c.url} target="_blank" rel="noopener noreferrer" 
-            className="mt-4 px-4 py-2 bg-[#ec6e59] text-white rounded-lg no-underline hover:no-underline">
+            className="mt-4 px-4 py-2 bg-[#2e8b57] text-white rounded-lg no-underline hover:no-underline">
             Verify
           </a>
           </div>

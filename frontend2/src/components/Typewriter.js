@@ -7,6 +7,7 @@ const Typewriter = () => {
     'Flutter Developer',
     'Software Engineer',
     'Mobile App Developer',
+    'Ruby on Rails Developer'
   ];
   const [currentStringIndex, setCurrentStringIndex] = useState(0);
   const [currentString, setCurrentString] = useState('');
@@ -40,7 +41,7 @@ const Typewriter = () => {
   }, [currentString, currentStringIndex, isTyping]);
 
   return (
-    <span className="font-[500] dark:font-[400] text-black dark:text-[#ec6e59;] text-[1.5rem] mb-2 sm:text-[2rem]">
+    <span className="font-[500] dark:font-[400] text-black dark:text-[#2e8b57;] text-[1.5rem] mb-2 sm:text-[2rem]">
       {currentString}
     </span>
   );

@@ -2,7 +2,7 @@ Base/.env
 frontend2/node_modules
 frontend2/.pnp
 .pnp.js
-
+portfolioEnv
 # testing
 /coverage
 

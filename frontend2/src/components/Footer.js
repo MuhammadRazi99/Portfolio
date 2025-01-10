@@ -2,7 +2,7 @@ import React from 'react';
 
 function Footer() {
 	return (
-		<div className="py-5 bg-[#ec6e59;] text-center text-black-300 rounded-t-lg mt-10">
+		<div className="py-5 bg-[#2e8b57;] text-center text-black-300 rounded-t-lg mt-10">
 			<a href="#hero" className="block text-xl md:text-2xl font-semibold">
                 Muhammad Razi Ur Rehman
 			</a>

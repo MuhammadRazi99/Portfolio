@@ -9,6 +9,7 @@ import Education from './components/Education';
 import Certificate from './components/Certificate';
 import Publication from './components/Publication';
 import ChatbotComponent from './components/chatbot';
+import Achievement from './components/Achievement';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -17,6 +18,7 @@ function App() {
   const [project,setProject]=useState([])
   const [certificate,setCertificate]=useState([])
   const [publication,setPublication]=useState([])
+  const [achievement,setAchievement]=useState([])
 
   useEffect(()=>{
     getData()
@@ -45,6 +47,10 @@ function App() {
     const publicationData=await publicationResponse.json()
     setPublication(publicationData.results)
     
+    const achievementResponse= await fetch('/achievement')
+    const achievementData=await achievementResponse.json()
+    setAchievement(achievementData.results)
+    
     // console.log(certificateResponse)
     
     // console.log(education)
@@ -69,6 +75,7 @@ function App() {
         <Main />
         <Education education={education}/>
         <Experiences experience={experience}/>
+        <Achievement achievement={achievement}/>
         <Projects project={project}/>
         <Certificate certificate={certificate}/>
         <Publication publication={publication}/>
