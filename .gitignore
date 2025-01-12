@@ -1,6 +1,7 @@
 Base/.env
 frontend2/node_modules
 frontend2/.pnp
+frontend2/build
 .pnp.js
 portfolioEnv
 # testing
