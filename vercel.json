@@ -1,27 +1,26 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "frontend2/package.json",
-        "use": "@vercel/static-build",
-        "config": {
-          "distDir": "frontend2/build"
-        }
-      },
-      {
-        "src": "portfolio/wsgi.py",
-        "use": "@vercel/python"
+  "version": 2,
+  "builds": [
+    {
+      "src": "frontend2/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "frontend2/build"
       }
-    ],
-    "routes": [
-      {
-        "src": "/Base/(.*)",
-        "dest": "/portfolio/wsgi.py"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "/frontend2/build/index.html"
-      }
-    ]
-  }
-  
+    },
+    {
+      "src": "portfolio/wsgi.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/Base/(.*)",
+      "dest": "/portfolio/wsgi.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend2/build/index.html"
+    }
+  ]
+}
