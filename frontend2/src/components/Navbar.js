@@ -3,7 +3,7 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { TbWorldCode } from 'react-icons/tb';
 
 function Navbar() {
-    const [colorTheme, setColorTheme] = useState('light');
+    // const [colorTheme, setColorTheme] = useState('light');
     const [showMenu, setShowMenu] = useState(false);
 
     const scrollToComponent = (componentId) => {
@@ -35,11 +35,12 @@ function Navbar() {
     return (
         <>
             <div className="flex fixed top-0 w-full z-50 justify-between py-[1rem] pl-[3.5rem] pr-[3.5rem] sm:px-[1.5rem] items-center bg-[#2e8b57;]">
-                {colorTheme === 'dark' ? (
+            <TbWorldCode alt="logo" className="h-[2vw] min-h-[35px] w-[7.8125vw] min-w-[134px] sm:h-[1.8rem] sm:w-[7rem]" />
+                {/* {colorTheme === 'dark' ? (
                     <TbWorldCode alt="logo" className="h-[2vw] min-h-[35px] w-[7.8125vw] min-w-[134px] sm:h-[1.8rem] sm:w-[7rem]" />
                 ) : (
                     <TbWorldCode className="h-[2w] min-h-[35px] w-[7.8125vw] min-w-[134px] sm:h-[1.8rem] sm:w-[7rem]" />
-                )}
+                )} */}
                 {!showMenu && (
                     <ul className="hidden tm:block sm:block md:flex font-[500] text-black dark:text-white dark:font-[300] text-custom-20 gap-[5rem] md:gap-[3rem] lg:gap-4rem">
                         <button
