@@ -2,17 +2,16 @@
   "version": 2,
   "builds": [
     {
-      "src": "portfolio/wsgi.py",
-      "use": "@vercel/python"
-    },
-    {
       "src": "frontend2/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "frontend2/build"
+        "distDir": "frontend2"
       }
+    },
+    {
+      "src": "portfolio/wsgi.py",
+      "use": "@vercel/python"
     }
-    
   ],
   "routes": [
     {
