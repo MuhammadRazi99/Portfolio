@@ -16,7 +16,7 @@
     "routes": [
       {
         "src": "/Base/(.*)",
-        "dest": "/backend/wsgi.py"
+        "dest": "/portfolio/wsgi.py"
       },
       {
         "src": "/(.*)",
