@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
 const Typewriter = () => {
-  const strings = [
+  const strings = useMemo(() => [
     'AI Engineer',
     'ML Engineer',
     'Flutter Developer',
     'Software Engineer',
     'Mobile App Developer',
-    'Ruby on Rails Developer'
-  ];
+    'Ruby on Rails Developer',
+  ], []);
+  
   const [currentStringIndex, setCurrentStringIndex] = useState(0);
   const [currentString, setCurrentString] = useState('');
   const [isTyping, setIsTyping] = useState(true);
@@ -38,7 +39,7 @@ const Typewriter = () => {
         return () => clearTimeout(timeout);
       }
     }
-  }, [currentString, currentStringIndex, isTyping]);
+  }, [currentString, currentStringIndex, isTyping,strings]);
 
   return (
     <span className="font-[500] dark:font-[400] text-black dark:text-[#2e8b57;] text-[1.5rem] mb-2 sm:text-[2rem]">

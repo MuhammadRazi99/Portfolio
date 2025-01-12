@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { TbWorldCode } from 'react-icons/tb';
 
@@ -18,19 +18,19 @@ function Navbar() {
         }
     };
 
-    const handleWindowResize = () => {
+    const handleWindowResize = useCallback(() => {
         const screenWidth = window.innerWidth;
         if (screenWidth > 640 && showMenu) {
             setShowMenu(false);
         }
-    };
-    // to handle window resize for mobile view
+    }, [showMenu]);
+
     useEffect(() => {
         window.addEventListener('resize', handleWindowResize);
         return () => {
             window.removeEventListener('resize', handleWindowResize);
         };
-    }, [showMenu]);
+    }, [handleWindowResize]);
 
     return (
         <>
@@ -42,48 +42,48 @@ function Navbar() {
                 )}
                 {!showMenu && (
                     <ul className="hidden tm:block sm:block md:flex font-[500] text-black dark:text-white dark:font-[300] text-custom-20 gap-[5rem] md:gap-[3rem] lg:gap-4rem">
-                        <a
+                        <button
                             className="tracking-wider hover:after:bg-black dark:hover:after:bg-[#2e8b57;]"
                             onClick={() => scrollToComponent('main')}
                         >
                             Home
-                        </a>
-                        <a
+                        </button>
+                        <button
                             className="tracking-wider hover:after:bg-black dark:hover:after:bg-[#2e8b57;]"
                             onClick={() => scrollToComponent('education')}
                         >
                             Education
-                        </a>
-                        <a
+                        </button>
+                        <button
                             className="tracking-wider hover:after:bg-black dark:hover:after:bg-[#2e8b57;]"
                             onClick={() => scrollToComponent('experience')}
                         >
                             Experience
-                        </a>
-                        <a
+                        </button>
+                        <button
                             className="tracking-wider hover:after:bg-black dark:hover:after:bg-[#2e8b57;]"
                             onClick={() => scrollToComponent('achievement')}
                         >
                             Achievement
-                        </a>
-                        <a
+                        </button>
+                        <button
                             className="tracking-wide hover:after:bg-black dark:hover:after:bg-[#2e8b57;]"
                             onClick={() => scrollToComponent('projects')}
                         >
                             Projects
-                        </a>
-                        <a
+                        </button>
+                        <button
                             className="tracking-wider hover:after:bg-black dark:hover:after:bg-[#2e8b57;]"
                             onClick={() => scrollToComponent('certificates')}
                         >
                             Certificates
-                        </a>
-                        <a
+                        </button>
+                        <button
                             className="tracking-wider hover:after:bg-black dark:hover:after:bg-[#2e8b57;]"
                             onClick={() => scrollToComponent('publications')}
                         >
                             Publications
-                        </a>
+                        </button>
                     </ul>
                 )}
                 <div className="flex">
@@ -95,48 +95,48 @@ function Navbar() {
                     </div>
                     {showMenu && (
                         <ul className="flex flex-col font-[500] text-black dark:font-[300] text-custom-20 gap-[2rem] md:gap-[3rem] lg:gap-2rem absolute top-[4.5rem] right-[3.5rem] z-10 bg-[#fdd6cf] p-4 shadow-md rounded">
-                            <a
+                            <button
                                 className="tracking-wider hover:after:bg-black dark:hover:after:bg-[#2e8b57;]"
                                 onClick={() => scrollToComponent('main')}
                             >
                                 Home
-                            </a>
-                            <a
+                            </button>
+                            <button
                                 className="tracking-wider hover:after:bg-black dark:hover:after:bg-[#2e8b57;]"
                                 onClick={() => scrollToComponent('education')}
                             >
                                 Education
-                            </a>
-                            <a
+                            </button>
+                            <button
                                 className="tracking-wider hover:after:bg-black dark:hover:after:bg-[#2e8b57;]"
                                 onClick={() => scrollToComponent('experience')}
                             >
                                 Experience
-                            </a>
-                            <a
+                            </button>
+                            <button
                                 className="tracking-wider hover:after:bg-black dark:hover:after:bg-[#2e8b57;]"
                                 onClick={() => scrollToComponent('achievement')}
                             >
                                 Achievement
-                            </a>
-                            <a
+                            </button>
+                            <button
                                 className="tracking-wide hover:after:bg-black dark:hover:after:bg-[#2e8b57;] "
                                 onClick={() => scrollToComponent('projects')}
                             >
                                 Projects
-                            </a>
-                            <a
+                            </button>
+                            <button
                                 className="tracking-wider hover:after:bg-black dark:hover:after:bg-[#2e8b57;] f"
                                 onClick={() => scrollToComponent('certificates')}
                             >
                                 Certificates
-                            </a>
-                            <a
+                            </button>
+                            <button
                                 className="tracking-wider hover:after:bg-black dark:hover:after:bg-[#2e8b57;] f"
                                 onClick={() => scrollToComponent('publications')}
                             >
                                 Publications
-                            </a>
+                            </button>
                         </ul>
                     )}
                 </div>
