@@ -54,8 +54,8 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 20
 }
-CORS_ALLOW_ALL_ORIGINS = True
-# ['http://localhost:3000',]
+# CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS=['http://localhost:3000','https://portfolio-muhammad-razi-ur-rehman.vercel.app']
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',

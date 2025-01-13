@@ -12,6 +12,7 @@ import ChatbotComponent from './components/chatbot';
 import Achievement from './components/Achievement';
 
 function App() {
+  
   const [loading, setLoading] = useState(true);
   const [education, setEducation]=useState([])
   const [experience, setExperience]=useState([])
@@ -26,28 +27,29 @@ function App() {
 
   const getData=async()=>{
   try{
-    const educationResponse= await fetch('/education')
+    const baseURL = "https://portfolio-muhammad-razi-ur-rehman.vercel.app";
+    const educationResponse= await fetch(`${baseURL}/education`)
     const educationData=await educationResponse.json()
     setEducation(educationData.results)
     
-    const experienceResponse= await fetch('/experience')
+    const experienceResponse= await fetch(`${baseURL}/experience`)
     const experienceData=await experienceResponse.json()
     setExperience(experienceData.results)
     
     
-    const ProjectResponse= await fetch('/project')
+    const ProjectResponse= await fetch(`${baseURL}/project`)
     const projectData=await ProjectResponse.json()
     setProject(projectData.results)
     
-    const certificateResponse= await fetch('/certificate')
+    const certificateResponse= await fetch(`${baseURL}/certificate`)
     const certificateData=await certificateResponse.json()
     setCertificate(certificateData.results)
     
-    const publicationResponse= await fetch('/publication')
+    const publicationResponse= await fetch(`${baseURL}/publication`)
     const publicationData=await publicationResponse.json()
     setPublication(publicationData.results)
     
-    const achievementResponse= await fetch('/achievement')
+    const achievementResponse= await fetch(`${baseURL}/achievement`)
     const achievementData=await achievementResponse.json()
     setAchievement(achievementData.results)
     

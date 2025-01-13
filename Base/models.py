@@ -7,6 +7,8 @@ class Education(models.Model):
     years=models.CharField(max_length=25)
     cgpa=models.DecimalField(max_digits=5,decimal_places=2)
     ordinal=models.IntegerField()
+    class Meta:
+        ordering=['ordinal']
 
 class Experience(models.Model):
     title=models.CharField(max_length=100,null=True)
@@ -23,6 +25,8 @@ class Project(models.Model):
     image=models.ImageField(upload_to='uploads/')
     url=models.URLField(null=True)
     ordinal=models.IntegerField()
+    class Meta:
+        ordering=['ordinal']
 
 class Certificate(models.Model):
     title=models.CharField(max_length=100)
@@ -30,16 +34,22 @@ class Certificate(models.Model):
     image=models.ImageField(upload_to='uploads/',null=True)
     url=models.URLField()
     ordinal=models.IntegerField()
+    class Meta:
+        ordering=['ordinal']
 
 class Publication(models.Model):
     title=models.CharField(max_length=200)
     publishers=models.CharField(max_length=100)
     url=models.URLField()
     ordinal=models.IntegerField()
+    class Meta:
+        ordering=['ordinal']
 
 class Achievement(models.Model):
     title=models.CharField(max_length=200)
     description=models.TextField()
     image=models.ImageField(upload_to='uploads/', null=True)
     ordinal=models.IntegerField()
+    class Meta:
+        ordering=['ordinal']
     

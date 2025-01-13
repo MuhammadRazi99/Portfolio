@@ -18,12 +18,32 @@
   ],
   "routes": [
     {
-      "src": "/Base/(.*)",
+      "src": "^/education$",
+      "dest": "/portfolio/wsgi.py"
+    },
+    {
+      "src": "^/experience$",
+      "dest": "/portfolio/wsgi.py"
+    },
+    {
+      "src": "^/project$",
+      "dest": "/portfolio/wsgi.py"
+    },
+    {
+      "src": "^/certificate$",
+      "dest": "/portfolio/wsgi.py"
+    },
+    {
+      "src": "^/publication$",
+      "dest": "/portfolio/wsgi.py"
+    },
+    {
+      "src": "^/achievement$",
       "dest": "/portfolio/wsgi.py"
     },
     {
       "src": "/(.*)",
-      "dest": "/frontend2/build/index.html"
+      "dest": "/frontend2/build/$1"
     }
   ]
 }
