@@ -13,7 +13,7 @@
       "src": "requirements.txt",
       "use": "@vercel/static-build",
       "config": {
-        "buildCommand": "pip install -r requirements.txt && python manage.py migrate && python manage.py collectstatic --noinput"
+        "buildCommand": "pip install -r requirements.txt && python3.12 manage.py migrate && python3.12 manage.py collectstatic --noinput"
       }
     }
   ],
