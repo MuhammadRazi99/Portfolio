@@ -28,28 +28,28 @@ function App() {
   const getData=async()=>{
   try{
     const baseURL = "https://muhammad-razi-ur-rehman-portfolio-backend.vercel.app";
-    const educationResponse= await fetch(`${baseURL}/education`)
+    const educationResponse= await fetch(`${baseURL}/education/`)
     const educationData=await educationResponse.json()
     setEducation(educationData.results)
     
-    const experienceResponse= await fetch(`${baseURL}/experience`)
+    const experienceResponse= await fetch(`${baseURL}/experience/`)
     const experienceData=await experienceResponse.json()
     setExperience(experienceData.results)
     
     
-    const ProjectResponse= await fetch(`${baseURL}/project`)
+    const ProjectResponse= await fetch(`${baseURL}/project/`)
     const projectData=await ProjectResponse.json()
     setProject(projectData.results)
     
-    const certificateResponse= await fetch(`${baseURL}/certificate`)
+    const certificateResponse= await fetch(`${baseURL}/certificate/`)
     const certificateData=await certificateResponse.json()
     setCertificate(certificateData.results)
     
-    const publicationResponse= await fetch(`${baseURL}/publication`)
+    const publicationResponse= await fetch(`${baseURL}/publication/`)
     const publicationData=await publicationResponse.json()
     setPublication(publicationData.results)
     
-    const achievementResponse= await fetch(`${baseURL}/achievement`)
+    const achievementResponse= await fetch(`${baseURL}/achievement/`)
     const achievementData=await achievementResponse.json()
     setAchievement(achievementData.results)
     
