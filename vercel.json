@@ -10,10 +10,10 @@
       }
     },
     {
-      "src": "./build.sh",
+      "src": "requirements.txt",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "uploads/uploads"
+        "buildCommand": "pip install -r requirements.txt && python manage.py migrate && python manage.py collectstatic --noinput"
       }
     }
   ],
