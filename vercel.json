@@ -2,13 +2,6 @@
   "version": 2,
   "builds": [
     {
-      "src": "frontend2/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "build"
-      }
-    },
-    {
       "src": "portfolio/wsgi.py",
       "use": "@vercel/python",
       "config": {
@@ -40,10 +33,6 @@
     {
       "src": "^/achievement$",
       "dest": "/portfolio/wsgi.py"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/frontend2/build/$1"
     }
   ]
 }
