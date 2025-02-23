@@ -27,7 +27,7 @@ function App() {
 
   const getData=async()=>{
   try{
-    const baseURL = "https://portfolio-muhammad-razi-ur-rehman.vercel.app";
+    const baseURL = "https://muhammad-razi-ur-rehman-portfolio-backend.vercel.app";
     const educationResponse= await fetch(`${baseURL}/education`)
     const educationData=await educationResponse.json()
     setEducation(educationData.results)

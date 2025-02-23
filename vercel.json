@@ -5,33 +5,25 @@
       "src": "portfolio/wsgi.py",
       "use": "@vercel/python",
       "config": {
-        "buildCommand": "./build.sh"
+        "maxLambdaSize": "15mb",
+        "runtime": "Python3.12"
+      }
+    },
+    {
+      "src": "build.sh",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "uploads/uploads"
       }
     }
   ],
   "routes": [
     {
-      "src": "^/education$",
-      "dest": "/portfolio/wsgi.py"
+      "src": "/static/(.*)",
+      "dest": "/uploads/uploads/$1"
     },
     {
-      "src": "^/experience$",
-      "dest": "/portfolio/wsgi.py"
-    },
-    {
-      "src": "^/project$",
-      "dest": "/portfolio/wsgi.py"
-    },
-    {
-      "src": "^/certificate$",
-      "dest": "/portfolio/wsgi.py"
-    },
-    {
-      "src": "^/publication$",
-      "dest": "/portfolio/wsgi.py"
-    },
-    {
-      "src": "^/achievement$",
+      "src": "/(.*)",
       "dest": "/portfolio/wsgi.py"
     }
   ]
