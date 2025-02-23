@@ -19,9 +19,9 @@ load_dotenv(dotenv_path=dotenv_path)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-MEDIA_URL = '/uploads/'  # URL for media files
+# MEDIA_URL = '/uploads/'  # URL for media files
 STATIC_URL = '/uploads/'  # URL for media files
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads') 
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads') 
 STATIC_ROOT = os.path.join(BASE_DIR, 'uploads') 
 
 # Quick-start development settings - unsuitable for production
