@@ -8,6 +8,7 @@ const Typewriter = () => {
     'Software Engineer',
     'Mobile App Developer',
     'Ruby on Rails Developer',
+    'Langchain Developer'
   ], []);
   
   const [currentStringIndex, setCurrentStringIndex] = useState(0);

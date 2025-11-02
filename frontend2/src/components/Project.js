@@ -46,10 +46,6 @@ function Projects({project=[]}) {
         ]
       };
     
-      if (!project  || project.length === 0) {
-        return <p>No projects to display</p>;
-      }
-    
       return (
         <div id="projects" className='sm:pl-[4rem] p-4 mx-7 mt-4 sm:mt-0 sm:pt-16 pb-20 sm:px-4 sm:py-0'>
             <div>
@@ -57,7 +53,9 @@ function Projects({project=[]}) {
               Projects
             </h1>
           </div>
-        <Slider {...settings} className="w-full">
+        {(!project  || project.length === 0) 
+        ? (<p>Projects are currently unavailable. Please check back soon.</p>) 
+        : (<Slider {...settings} className="w-full">
           {project.map(p => (
             <div key={p.id} className={`flex flex-col items-center p-2 bg-gray-100 w-[600px] h-[580px] rounded-lg shadow-md ${expanded[p.id]? 'overflow-y-auto':'overflow-hidden' }`}>
               
@@ -97,7 +95,7 @@ function Projects({project=[]}) {
             
             </div>
           ))}
-        </Slider>
+        </Slider>)}
         </div>
       );
 }
