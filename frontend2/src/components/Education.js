@@ -8,7 +8,10 @@ function Education({education}) {
           Education
         </h1>
       </div>
-      {education.map(e => (
+      {
+      (!education || education.length === 0)
+      ? (<p>Education is currently unavailable. Please check back soon.</p>)
+      :(education.map(e => (
         <div key={e.id}  className='flex flex-col mt-10 items-center justify-center'>
         <div className='flex flex-col sm:flex-row gap-10 ml-4 w-full'>
           {/* Left Section - Degree Name and Years */}
@@ -32,7 +35,7 @@ function Education({education}) {
           </div>
         </div>
       </div>
-      ))} 
+      )))} 
     </div>
   );
 }

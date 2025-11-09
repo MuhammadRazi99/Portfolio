@@ -8,7 +8,10 @@ function Achievement({achievement}) {
           Achievement
         </h1>
       </div>
-      <div className="space-y-12 max-w-4xl mx-auto">
+
+      {!achievement || achievement.length === 0
+      ? (<p>Achievements are currently unavailable. Please check back soon.</p>)
+      : (<div className="space-y-12 max-w-4xl mx-auto">
         {achievement.map((e, index) => (
           <div
             key={index}
@@ -20,7 +23,7 @@ function Achievement({achievement}) {
             {/* Image Section */}
             <div className="flex-shrink-0 w-full sm:w-1/2">
               <img
-                src={e.image}
+                src={`${e.image.image}`}
                 alt={e.title}
                 className="w-full h-auto object-cover rounded-lg"
               />
@@ -33,7 +36,7 @@ function Achievement({achievement}) {
             </div>
           </div>
         ))}
-      </div>
+      </div>)}
     </div>
   );
 }

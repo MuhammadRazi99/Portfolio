@@ -12,7 +12,10 @@ function Experience({ experience }) {
         </h1>
       </div>
 
-      {experience.map((e) => (
+      
+      { (!experience || experience.length === 0)
+      ? (<p>Experiences are currently unavailable. Please check back soon.</p>)
+      :(experience.map((e) => (
         <div key={e.id} className="flex flex-col mt-10 items-start">
           <div className="flex flex-col sm:flex-row gap-10 w-full">
             {/* Left Section - Company Name and Duration */}
@@ -38,7 +41,7 @@ function Experience({ experience }) {
             </div>
           </div>
         </div>
-      ))}
+      )))}
     </div>
   );
 }
