@@ -44,9 +44,9 @@ class CertificateSerializer(serializers.ModelSerializer):
         model=Certificate
         fields = ['id', 'title', 'issuer', 'url', 'ordinal', 'image']
 
-        def get_image(self, obj):
-            first = obj.images.first()
-            return PortfolioImageSerializer(first).data if first else None
+    def get_image(self, obj):
+        first = obj.images.first()
+        return PortfolioImageSerializer(first).data if first else None
 
 class PublicationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -60,6 +60,6 @@ class AchievementSerializer(serializers.ModelSerializer):
         model=Achievement
         fields = ['id', 'title', 'description', 'ordinal', 'image']
 
-        def get_image(self, obj):
-            first = obj.images.first()
-            return PortfolioImageSerializer(first).data if first else None
+    def get_image(self, obj):
+        first = obj.images.first()
+        return PortfolioImageSerializer(first).data if first else None

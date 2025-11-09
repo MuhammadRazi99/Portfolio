@@ -55,7 +55,7 @@ class Project(models.Model):
 class Certificate(models.Model):
     title=models.CharField(max_length=100)
     issuer=models.CharField(max_length=100)
-    images = GenericRelation('PortfolioImage', related_query_name='certifacte')
+    images = GenericRelation('PortfolioImage', related_query_name='certificate')
     url=models.URLField()
     ordinal=models.IntegerField()
     class Meta:

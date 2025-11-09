@@ -57,15 +57,29 @@ function Projects({project=[]}) {
         ? (<p>Projects are currently unavailable. Please check back soon.</p>) 
         : (<Slider {...settings} className="w-full">
           {project.map(p => (
-            <div key={p.id} className={`flex flex-col items-center p-2 bg-gray-100 w-[600px] h-[580px] rounded-lg shadow-md ${expanded[p.id]? 'overflow-y-auto':'overflow-hidden' }`}>
+            <div key={p.id} className={`flex flex-col items-center p-2 bg-gray-100 w-[450px] h-[520px] rounded-lg shadow-md ${expanded[p.id]? 'overflow-y-auto':'overflow-hidden' }`}>
               
               <div className="flex justify-center items-center">
-              <img src={p.image} alt={p.title} className={`w-[500px] h-[300px] rounded-lg ${expanded[p.id]?'object-contain':'object-cover'}`}/>
+              <img src={p.first_image} alt={p.title} className={`w-[500px] h-[300px] rounded-lg ${expanded[p.id]?'object-contain':'object-cover'}`}/>
               </div>
               
-              <h2 className="text-xl text-center font-semibold mt-4">{p.title}</h2>
-              
-              <div className="flex justify-center items-center">
+              <h2 className="
+                text-l font-semibold text-center mt-4
+                line-clamp-2
+                h-[3rem]   /* reserve space even if 1 line */
+              ">
+                {p.title}
+              </h2>
+
+              <h3 className="
+                  text-sm text-center my-1 dark:text-[#ccc]
+                  line-clamp-4
+                  h-[6rem]   /* reserve space even if 1 line */
+                ">
+                {p.summary}
+              </h3>
+
+              {/* <div className="flex justify-center items-center">
               <ul className={`w-[90%] sm:w-[80%] font-light text-custom-18 leading-relaxed text-sm dark:text-[#ccc] pt-3${expanded[p.id] ? "h-[130px]" : "line-clamp-2 overflow-hidden text-ellipsis h-max"}`}>
               {p.description
                 .split('\n')
@@ -77,7 +91,7 @@ function Projects({project=[]}) {
               ))}
               </ul>
               </div>
-              
+               */}
 
               
               <div className='w-full flex justify-center items-center gap-4 relative mt-4 '>
@@ -85,12 +99,12 @@ function Projects({project=[]}) {
                 className=" px-4 bg-[#2e8b57] text-white rounded-lg no-underline hover:no-underline">
                 Demo
               </a>
-              <button
+              {/* <button
                 onClick={() => toggleReadMore(p.id)}
                 className="px-4 text-white bg-blue-500 rounded-lg "
               >
                 {expanded[p.id] ? "Read less" : "Read more"}
-              </button>
+              </button> */}
               </div>
             
             </div>

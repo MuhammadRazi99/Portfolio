@@ -23,7 +23,7 @@ function Achievement({achievement}) {
             {/* Image Section */}
             <div className="flex-shrink-0 w-full sm:w-1/2">
               <img
-                src={e.image}
+                src={`${e.image.image}`}
                 alt={e.title}
                 className="w-full h-auto object-cover rounded-lg"
               />
