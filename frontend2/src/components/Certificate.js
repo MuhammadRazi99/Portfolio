@@ -2,7 +2,7 @@ import React from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from "react-slick";
-
+import { baseURL } from '../Constants'; 
 
 // primary color = #2e8b57
 const Certificate = ({ certificate = [] }) => {
@@ -56,7 +56,7 @@ const Certificate = ({ certificate = [] }) => {
               {/* Image */}
               <div className="flex justify-center items-center">
                 <img
-                  src={c.image.image}
+                  src={`${baseURL}${c.image.image}`}
                   alt={c.title}
                   className="w-[300px] h-[200px] object-cover rounded-lg"
                 />

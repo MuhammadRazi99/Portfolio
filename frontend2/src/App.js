@@ -10,6 +10,7 @@ import Certificate from './components/Certificate';
 import Publication from './components/Publication';
 import ChatbotComponent from './components/chatbot';
 import Achievement from './components/Achievement';
+import { baseURL } from './Constants';
 
 function App() {
   
@@ -27,8 +28,7 @@ function App() {
 
   const getData=async()=>{
   try{
-    const baseURL = "https://muhammad-razi-ur-rehman-portfolio-backend.vercel.app";
-    // const baseURL = "http://localhost:8000";
+    
     const educationResponse= await fetch(`${baseURL}/education/`)
     const educationData=await educationResponse.json()
     setEducation(educationData.results)

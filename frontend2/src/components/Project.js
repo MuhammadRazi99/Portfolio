@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import 'slick-carousel/slick/slick.css'; 
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from "react-slick";
+import { baseURL } from '../Constants'; 
 
 function Projects({project=[]}) {
   
@@ -60,7 +61,7 @@ function Projects({project=[]}) {
             <div key={p.id} className={`flex flex-col items-center p-2 bg-gray-100 w-[450px] h-[520px] rounded-lg shadow-md ${expanded[p.id]? 'overflow-y-auto':'overflow-hidden' }`}>
               
               <div className="flex justify-center items-center">
-              <img src={p.first_image} alt={p.title} className={`w-[500px] h-[300px] rounded-lg ${expanded[p.id]?'object-contain':'object-cover'}`}/>
+              <img src={`${baseURL}${p.first_image}`} alt={p.title} className={`w-[500px] h-[300px] rounded-lg ${expanded[p.id]?'object-contain':'object-cover'}`}/>
               </div>
               
               <h2 className="
