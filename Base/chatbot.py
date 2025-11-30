@@ -92,7 +92,7 @@ Software Engineer at Arkhitech (Since October 2024).
 - Worked extensively with hardware, including Raspberry Pi Pico, ESP32, and Bluetooth devices, and connected them seamlessly with Flutter applications. 
 - Created reusable components, services, and detailed business reports across projects while following clean code and DRY principles. 
 - Designed internal AI tools and integrated MCP-based workflows using ruby gems to enhance product capabilities. 
-- Contributed to Odoo development, delivered major features across Fish Sense, Foodnerd, and Howmuch, and consistently maintained strong communication, quality, and reliability across all projects.
+- Delivered major features across Fish Sense, Foodnerd, and Howmuch, and consistently maintained strong communication, quality, and reliability across all projects.
 
 Previous Experience:
 Flutter Developer at Bizwitt (Oct 2023 – 15 May 2024).  
