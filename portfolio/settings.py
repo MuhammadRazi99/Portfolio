@@ -69,38 +69,37 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS=['http://localhost:3000','https://muhammad-razi-ur-rehman-portfolio-backend.vercel.app','https://muhammad-razi-ur-rehman-portfolio.vercel.app']
+CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000','https://muhammad-razi-ur-rehman-portfolio-backend.vercel.app','https://muhammad-razi-ur-rehman-portfolio.vercel.app']  
+CSRF_COOKIE_HTTPONLY = True 
+CSRF_COOKIE_SECURE = not DEBUG     # Only send CSRF cookie over HTTPS in production
+CSRF_COOKIE_SAMESITE = 'None' if not DEBUG else 'Lax'
+
+# Session Settings
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_COOKIE_AGE=10800
 
-# # Add these for production security:
-# SESSION_COOKIE_SECURE = not DEBUG  # Only send session cookie over HTTPS in production
-# CSRF_COOKIE_SECURE = not DEBUG     # Only send CSRF cookie over HTTPS in production
 
-# CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOWED_ORIGINS=['http://localhost:3000','https://muhammad-razi-ur-rehman-portfolio-backend.vercel.app','https://muhammad-razi-ur-rehman-portfolio.vercel.app']
-
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000','https://muhammad-razi-ur-rehman-portfolio.vercel.app']  
-CORS_ALLOW_CREDENTIALS = True
-
-CSRF_COOKIE_HTTPONLY = False  # Allow JavaScript to read CSRF cookie
-CSRF_COOKIE_SAMESITE = 'None' if not DEBUG else 'Lax'
-# Session Settings
+SESSION_COOKIE_SECURE = not DEBUG  # Only send session cookie over HTTPS in production
 SESSION_COOKIE_SAMESITE = 'None' if not DEBUG else 'Lax'
 SESSION_COOKIE_HTTPONLY = True
 SESSION_SAVE_EVERY_REQUEST = True
 
 # Add these security settings
-# SECURE_BROWSER_XSS_FILTER = True
-# SECURE_CONTENT_TYPE_NOSNIFF = True
-# X_FRAME_OPTIONS = 'DENY'
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+X_FRAME_OPTIONS = 'DENY'
 
-# # For production (when using HTTPS)
-# if not DEBUG:
-#     SECURE_SSL_REDIRECT = True
-#     SECURE_HSTS_SECONDS = 31536000  # 1 year
-#     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-#     SECURE_HSTS_PRELOAD = True
+# For production (when using HTTPS)
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
 
 
 ROOT_URLCONF = 'portfolio.urls'
