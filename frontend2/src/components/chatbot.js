@@ -1,103 +1,142 @@
-import {useState} from 'react';
-import { AiFillRobot,AiOutlineSend } from "react-icons/ai";
-
-function ChatbotComponent () {
-
-const [isChatOpen, setIsChatOpen] = useState(false);
-const [userInput,setUserInput]=useState('');
-const [messages, setMessages]=useState([{text:'Hi, I am Razi AI Assistant. How can I help you today?', type:'bot'}])
-
-const toggleChat = () => {
-    setIsChatOpen(!isChatOpen);
-};
-
-const sendMessage = async (message) => {
-   try {
-    const response=await fetch('http://localhost:8000/api/chatbot/', {
-      method:'POST', headers:{'Content-Type': 'application/json',},
-      body: JSON.stringify({message})
-    })
-    const data =await response.json()
-    return {response:data.response}
-   } catch (error) {
-    console.error("Error sending message to chatbot");
-    return {response: 'Error communicating with chatbot'};
-   }
-  };
-
-const handleSendMessage = async () => {
-    if (!userInput.trim()) return; // Do not allow empty messages
-
-    // Add user's message to chat
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { text: userInput, type: 'user' }
-    ]);
-
-    // Clear the textarea
-    setUserInput('');
-
-    // Perform the async operation (e.g., sending message to a chatbot)
-    const response = await sendMessage(userInput);
-
-    // Add bot's response to chat
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { text: response.response, type: 'bot' }
-    ]);
-  };
+import { useState, useRef, useEffect } from "react";
+import { AiFillRobot, AiOutlineSend } from "react-icons/ai";
+import { baseURL, getCookie } from "../Constants";
+const BASE_URL = `${baseURL}/api/chatbot/`;
 
 
-const handleKeyPress = async (event) => {
-    if (event.key === 'Enter' && !event.shiftKey) {
-      event.preventDefault();
-      await handleSendMessage();
+function ChatbotComponent() {
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [userInput, setUserInput] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const [messages, setMessages] = useState([
+    { text: "Hi, I am Razi AI Assistant. How can I help you today?", type: "bot" },
+  ]);
+
+  const messagesEndRef = useRef(null);
+
+  // Smooth auto scroll to last message
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  const toggleChat = () => setIsChatOpen((prev) => !prev);
+
+  const sendMessage = async (message) => {
+    try {
+      const response = await fetch(BASE_URL, {
+        method: "POST",
+        credentials: 'include',
+        headers: { "Content-Type": "application/json", 'X-CSRFToken': getCookie('csrftoken') },
+        body: JSON.stringify({ message }),
+      });
+      const data = await response.json();
+      return  data?.response || "No response from server";
+    } catch (error) {
+      console.error("Chatbot API error:", error);
+      return "⚠️ Error communicating with chatbot.";
     }
   };
 
-  
+  const handleSendMessage = async () => {
+    if (!userInput.trim() || loading) return;
+
+    const userMessage = userInput.trim();
+    setUserInput("");
+    setLoading(true);
+
+    // Add user message
+    setMessages((prev) => [...prev, { text: userMessage, type: "user" }]);
+
+    // Send to backend
+    const botReply = await sendMessage(userMessage);
+
+    // Add bot response
+    setMessages((prev) => [...prev, { text: botReply, type: "bot" }]);
+
+    setLoading(false);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage();
+    }
+  };
 return (
-<div >
-    
-    {/*  chatbot icon button */}
-    <button onClick={toggleChat} className='bg-[#2e8b57;] p-4 fixed bottom-16 right-10 border rounded-lg shadow-lg'>
-    <AiFillRobot size={40} className="cursor-pointer"/>
+  <div>
+    {/* Floating Chat Icon */}
+    <button
+      onClick={toggleChat}
+      className="bg-[#2e8b57] p-4 fixed bottom-16 right-10 border rounded-lg shadow-lg text-white"
+    >
+      <AiFillRobot size={40} />
     </button>
 
     {isChatOpen && (
-        <div className="fixed bottom-16 right-4 h-3/5 max-[670px]:w-3/4 w-[30%] bg-white border rounded-lg shadow-lg">
-          {/* Chatbox header with close button */}
-          <div className="flex justify-between items-center p-2 bg-[#2e8b57;] text-white">
-            <h3>Razi AI Assistant</h3>
-            <button onClick={toggleChat} className="text-white text-2xl">
-              &times;
-            </button>
-          </div>
+      <div className="fixed bottom-16 right-4 h-3/5 max-[670px]:w-3/4 w-[30%] bg-gray-100 border rounded-2xl shadow-xl flex flex-col overflow-hidden">
 
-          {/* Chatbox content */}      
-          
-          <div className="flex flex-col p-4 overflow-y-scroll h-4/6">
-            {messages.map((message,index)=>(
-                <p key={index} className={`text-white rounded-lg p-1 mb-3 max-w-xs ${message.type==='user'?'bg-black ml-3 self-end':"bg-[#2e8b57;] mr-3 self-start"}`}>{message.text}</p>
-            ))}        
-          </div>
-          
-          {/* text area and button */}
-          <div className='max-[670px]:w-[70%] w-[28%] fixed bottom-16 z-20 pl-4 pb-4 flex flex-row item-center justify-center'>
-            
-            <textarea className='w-full rounded-md p-1 shadow-md mr-[0.5rem]' type='text' 
-            name='userInput' value={userInput} onChange={(e)=>setUserInput(e.target.value)}
-            placeholder='Ask a question...' onKeyUp={handleKeyPress}/>
-            
-            <button onClick={handleSendMessage}>
-                <AiOutlineSend size={25}/>
-            </button>
-          
-          </div>
+        {/* Header */}
+        <div className="flex justify-between items-center p-3 bg-[#2e8b57] text-white rounded-t-2xl">
+          <span className="font-semibold">Razi AI Assistant</span>
+          <button onClick={toggleChat} className="text-2xl font-bold">
+            &times;
+          </button>
         </div>
-      )}
-</div>
+
+        {/* Messages */}
+        <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-3">
+
+          {messages.map((msg, index) => (
+            <div
+              key={index}
+              className={`
+                max-w-[75%] px-4 py-2 text-[15px] rounded-2xl leading-snug shadow-sm
+                ${msg.type === "user"
+                  ? "self-end bg-green-200 text-black rounded-br-md"
+                  : "self-start bg-white text-black border border-gray-300 rounded-bl-md"
+                }
+              `}
+            >
+              {msg.text}
+            </div>
+          ))}
+
+          {/* Loading Bubble */}
+          {loading && (
+            <div className="self-start bg-white border border-gray-300 px-4 py-2 rounded-2xl rounded-bl-md shadow-sm flex items-center gap-2">
+              <div className="w-2 h-2 bg-[#2e8b57] rounded-full animate-bounce"></div>
+              <div className="w-2 h-2 bg-[#2e8b57] rounded-full animate-bounce delay-150"></div>
+              <div className="w-2 h-2 bg-[#2e8b57] rounded-full animate-bounce delay-300"></div>
+            </div>
+          )}
+
+          <div ref={messagesEndRef} />
+        </div>
+
+        {/* Input Section */}
+        <div className="p-3 flex gap-2 border-t bg-white">
+          <textarea
+            className="flex-1 rounded-full px-4 py-2 border border-gray-300 shadow-sm resize-none h-11 text-black outline-none"
+            placeholder="Type a message…"
+            value={userInput}
+            onChange={(e) => setUserInput(e.target.value)}
+            onKeyDown={handleKeyPress}
+          />
+
+          <button
+            onClick={handleSendMessage}
+            disabled={loading}
+            className="p-3 bg-[#2e8b57] text-white rounded-full shadow disabled:opacity-50 flex justify-center items-center active:scale-95"
+          >
+            <AiOutlineSend size={22} />
+          </button>
+        </div>
+      </div>
+    )}
+  </div>
 );
-};
+
+}
 
 export default ChatbotComponent;

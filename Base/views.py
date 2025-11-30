@@ -15,7 +15,7 @@ def chatbot_response(request):
         user_message=request.data.get('message','')
         
         if 'chat_history' not in request.session:
-                request.session['chat_history'] = []
+            request.session['chat_history'] = []
 
         history=request.session['chat_history']
         response=runApp(user_message,history)
