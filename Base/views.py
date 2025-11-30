@@ -1,4 +1,5 @@
 from rest_framework.decorators import api_view
+from django.views.decorators.csrf import ensure_csrf_cookie
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from rest_framework import permissions, viewsets
@@ -15,7 +16,7 @@ def chatbot_response(request):
         user_message=request.data.get('message','')
         
         if 'chat_history' not in request.session:
-                request.session['chat_history'] = []
+            request.session['chat_history'] = []
 
         history=request.session['chat_history']
         response=runApp(user_message,history)
@@ -28,6 +29,11 @@ def chatbot_response(request):
         
         return JsonResponse({'response':response})
     return JsonResponse({'error':'Invalid request method'},status=400)
+
+@ensure_csrf_cookie
+@api_view(['GET'])
+def get_csrf_token(request):
+    return JsonResponse({'csrfToken': request.META.get('CSRF_COOKIE')})
 
 class UserViewSet(viewsets.ModelViewSet):
     """

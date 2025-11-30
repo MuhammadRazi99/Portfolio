@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useQuery } from "@tanstack/react-query";
 import Main from './components/Main';
 import Experiences from './components/Experiences';
 import Navbar from './components/Navbar';
@@ -10,83 +10,85 @@ import Certificate from './components/Certificate';
 import Publication from './components/Publication';
 import ChatbotComponent from './components/chatbot';
 import Achievement from './components/Achievement';
-import { baseURL } from './Constants';
+
+import {
+  fetchEducation,
+  fetchExperience,
+  fetchProjects,
+  fetchCertificates,
+  fetchPublications,
+  fetchAchievements
+} from "./api";
 
 function App() {
-  
-  const [loading, setLoading] = useState(true);
-  const [education, setEducation]=useState([])
-  const [experience, setExperience]=useState([])
-  const [project,setProject]=useState([])
-  const [certificate,setCertificate]=useState([])
-  const [publication,setPublication]=useState([])
-  const [achievement,setAchievement]=useState([])
 
-  useEffect(()=>{
-    getData()
-  },[])
+  const eduQuery = useQuery({
+    queryKey: ["education"],
+    queryFn: fetchEducation,
+  });
 
-  const getData=async()=>{
-  try{
-    
-    const educationResponse= await fetch(`${baseURL}/education/`)
-    const educationData=await educationResponse.json()
-    setEducation(educationData.results)
-    
-    const experienceResponse= await fetch(`${baseURL}/experience/`)
-    const experienceData=await experienceResponse.json()
-    setExperience(experienceData.results)
-    
-    
-    const ProjectResponse= await fetch(`${baseURL}/project/`)
-    const projectData=await ProjectResponse.json()
-    setProject(projectData.results)
-    
-    const certificateResponse= await fetch(`${baseURL}/certificate/`)
-    const certificateData=await certificateResponse.json()
-    setCertificate(certificateData.results)
-    
-    const publicationResponse= await fetch(`${baseURL}/publication/`)
-    const publicationData=await publicationResponse.json()
-    setPublication(publicationData.results)
-    
-    const achievementResponse= await fetch(`${baseURL}/achievement/`)
-    const achievementData=await achievementResponse.json()
-    setAchievement(achievementData.results)
-    
-    // console.log(certificateResponse)
-    
-    // console.log(education)
-    setLoading(false)
+  const expQuery = useQuery({
+    queryKey: ["experience"],
+    queryFn: fetchExperience,
+  });
 
-  } 
+  const projQuery = useQuery({
+    queryKey: ["projects"],
+    queryFn: fetchProjects,
+  });
 
-  catch(error){
-    console.error("error while fetching data")
-    setLoading(false)
-  }
+  const certQuery = useQuery({
+    queryKey: ["certificates"],
+    queryFn: fetchCertificates,
+  });
 
-  }
-  if (loading) {
-      return <div>Loading...</div>;  // Show a loading message or spinner while fetching data
-  }
+  const pubQuery = useQuery({
+    queryKey: ["publications"],
+    queryFn: fetchPublications,
+  });
+
+  const achQuery = useQuery({
+    queryKey: ["achievements"],
+    queryFn: fetchAchievements,
+  });
+
+  const isLoading =
+    eduQuery.isLoading ||
+    expQuery.isLoading ||
+    projQuery.isLoading ||
+    certQuery.isLoading ||
+    pubQuery.isLoading ||
+    achQuery.isLoading;
+
+  const isError =
+    eduQuery.isError ||
+    expQuery.isError ||
+    projQuery.isError ||
+    certQuery.isError ||
+    pubQuery.isError ||
+    achQuery.isError;
+
+  if (isLoading) return <div className="text-center mt-20">Loading...</div>;
+  if (isError) return <div className="text-center mt-20">Error loading data</div>;
 
   return (
     <BackgroundView>
-      <div className='font-poppins select-none text-black bg-white dark:bg-[#20262E] dark:text-white  transition duration-500'>
+      <div className='font-poppins select-none text-black bg-white dark:bg-[#20262E] dark:text-white transition duration-500'>
         <Navbar />
         <Main />
-        <Education education={education}/>
-        <Experiences experience={experience}/>
-        <Achievement achievement={achievement}/>
-        <Projects project={project}/>
-        <Certificate certificate={certificate}/>
-        <Publication publication={publication}/>
-        <ChatbotComponent/>
-        <Footer/>
+
+        <Education education={eduQuery.data?.results} />
+        <Experiences experience={expQuery.data?.results} />
+        <Achievement achievement={achQuery.data?.results} />
+        <Projects project={projQuery.data?.results} />
+        <Certificate certificate={certQuery.data?.results} />
+        <Publication publication={pubQuery.data?.results} />
+
+        <ChatbotComponent />
+        <Footer />
       </div>
     </BackgroundView>
-  )
+  );
 }
 
-export default App
+export default App;
