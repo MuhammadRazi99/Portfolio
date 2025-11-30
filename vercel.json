@@ -6,25 +6,18 @@
       "use": "@vercel/python",
       "config": {
         "maxLambdaSize": "15mb",
-        "runtime": "Python3.12"
-      }
-    },
-    {
-      "src": "./build.sh",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "uploads"
+        "runtime": "python3.12"
       }
     }
   ],
   "routes": [
     {
-      "src": "/static/(.*)",
+      "src": "/uploads/(.*)",
       "dest": "/uploads/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/portfolio/wsgi.py"
+      "dest": "portfolio/wsgi.py"
     }
   ]
 }
