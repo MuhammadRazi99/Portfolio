@@ -8,13 +8,10 @@
     }
   ],
   "routes": [
-    {
-      "src": "/uploads/(.*)",
-      "dest": "/uploads/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/portfolio/wsgi.py"
-    }
+    { "src": "/uploads/(.*)", "dest": "/uploads/$1" },
+    { "src": "/(.*)", "dest": "/portfolio/wsgi.py" }
+  ],
+  "files": [
+    "uploads/*"
   ]
 }
