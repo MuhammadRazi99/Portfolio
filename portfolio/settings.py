@@ -42,7 +42,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 ENV= os.getenv('DJANGO_ENV')
 DEBUG = ENV == 'development'
 
-ALLOWED_HOSTS = ['.vercel.app','localhost','127.0.0.1','https://muhammad-razi-ur-rehman-portfolio-backend.vercel.app','https://muhammad-razi-ur-rehman-portfolio.vercel.app']
+ALLOWED_HOSTS = ['.vercel.app','localhost','127.0.0.1','muhammad-razi-ur-rehman-portfolio-backend.vercel.app','muhammad-razi-ur-rehman-portfolio.vercel.app']
 
 
 # Application definition
@@ -81,8 +81,8 @@ CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = ['http://localhost:3000','https://muhammad-razi-ur-rehman-portfolio-backend.vercel.app','https://muhammad-razi-ur-rehman-portfolio.vercel.app']  
 CSRF_COOKIE_HTTPONLY = True 
 CSRF_COOKIE_SECURE = not DEBUG     # Only send CSRF cookie over HTTPS in production
-# CSRF_COOKIE_SAMESITE = 'None' if not DEBUG else 'Lax'
-CSRF_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_SAMESITE = 'None' if not DEBUG else 'Lax'
+# CSRF_COOKIE_SAMESITE = 'Lax'
 
 # Session Settings
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
@@ -91,8 +91,8 @@ SESSION_COOKIE_AGE=10800
 
 
 SESSION_COOKIE_SECURE = not DEBUG  # Only send session cookie over HTTPS in production
-# SESSION_COOKIE_SAMESITE = 'None' if not DEBUG else 'Lax'
-SESSION_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_SAMESITE = 'None' if not DEBUG else 'Lax'
+# SESSION_COOKIE_SAMESITE = 'Lax'
 SESSION_COOKIE_HTTPONLY = True
 SESSION_SAVE_EVERY_REQUEST = True
 
