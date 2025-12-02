@@ -16,8 +16,5 @@
       "src": "/(.*)",
       "dest": "/portfolio/wsgi.py"
     }
-  ],
-  "static": {
-    "directory": "uploads"
-  }
+  ]
 }
