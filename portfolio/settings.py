@@ -22,14 +22,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # for debug environment
 # STATIC_URL = '/uploads/'  # URL for media files
 # STATIC_ROOT = os.path.join(BASE_DIR, 'uploads') 
-# STATIC_URL = '/'  
-# STATIC_ROOT = BASE_DIR 
+STATIC_URL = '/'  
+STATIC_ROOT = BASE_DIR 
 
 # for production environment
 # MEDIA_URL = '/uploads/'  # URL for media files
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads') 
-MEDIA_URL = '/'  # URL for media files
-MEDIA_ROOT = BASE_DIR 
+# MEDIA_URL = '/'  # URL for media files
+# MEDIA_ROOT = BASE_DIR 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
