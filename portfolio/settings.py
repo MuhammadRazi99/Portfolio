@@ -20,10 +20,10 @@ load_dotenv(dotenv_path=dotenv_path)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 # for debug environment
-# STATIC_URL = '/uploads/'  # URL for media files
-# STATIC_ROOT = os.path.join(BASE_DIR, 'uploads') 
-STATIC_URL = '/'  
-STATIC_ROOT = BASE_DIR 
+STATIC_URL = '/uploads/'  # URL for media files
+STATIC_ROOT = os.path.join(BASE_DIR, 'uploads') 
+# STATIC_URL = '/'  
+# STATIC_ROOT = BASE_DIR 
 
 # for production environment
 # MEDIA_URL = '/uploads/'  # URL for media files
