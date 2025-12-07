@@ -14,9 +14,9 @@ function Publication({ publication }) {
         : (
           publication.map(p => (
             <div key={p.id} className=' flex flex-col mt-10 items-center justify-center'>
-              <div className="w-2/5 max-[670px]:w-3/4 flex flex-col items-center p-4 bg-gray-100 rounded-lg shadow-md">
+              <div className="w-2/5 max-[670px]:w-3/4 flex flex-col items-center p-4 bg-gray-100 dark:bg-gray-700 rounded-lg shadow-md">
                 <h2 className="text-xl font-semibold text-center mt-4">{p.title}</h2>
-                <h3 className='text-sm text-center my-1 dark:text-[#ccc]'>{p.publishers}</h3>
+                <h3 className='text-sm text-center my-1 text-gray-700 dark:text-gray-300'>{p.publishers}</h3>
                 <a href={p.url} target="_blank" rel="noopener noreferrer"
                   className="mt-4 px-4 py-2 bg-[#2e8b57] text-white rounded-lg no-underline hover:no-underline">
                   Read

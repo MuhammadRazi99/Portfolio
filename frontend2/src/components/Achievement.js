@@ -16,7 +16,7 @@ function Achievement({achievement}) {
         {achievement.map((e, index) => (
           <div
             key={index}
-            className="flex flex-col sm:flex-row items-center bg-white shadow-lg rounded-lg p-6 sm:p-8"
+            className="flex flex-col sm:flex-row items-center bg-gray-100 dark:bg-gray-700 shadow-lg rounded-lg p-6 sm:p-8"
             style={{
               borderLeft: "6px solid #2e8b57", // A subtle border to enhance visuals
             }}
@@ -33,7 +33,7 @@ function Achievement({achievement}) {
             {/* Text Section */}
             <div className="flex-1 mt-6 sm:mt-0 sm:ml-6 text-center sm:text-left">
               <h2 className="text-2xl font-bold mb-4">{e.title}</h2>
-              <p className="text-gray-700">{e.description}</p>
+              <p className="text-gray-700 dark:text-gray-300">{e.description}</p>
             </div>
           </div>
         ))}

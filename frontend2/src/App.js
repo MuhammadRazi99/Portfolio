@@ -68,8 +68,33 @@ function App() {
     pubQuery.isError ||
     achQuery.isError;
 
-  if (isLoading) return <div className="text-center mt-20">Loading...</div>;
-  if (isError) return <div className="text-center mt-20">Error loading data</div>;
+  if (isLoading) {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-white dark:bg-[#20262E] transition">
+      <div className="flex flex-col items-center gap-4">
+        {/* Spinner */}
+        <div className="w-10 h-10 rounded-full bg-[#2e8b57] dark:bg-[#2e8b57] animate-pulse"></div>
+        {/* Subtle Text */}
+        <p className="text-sm text-gray-600 dark:text-gray-300 tracking-wide">
+          Loading content...
+        </p>
+      </div>
+    </div>
+  );
+}
+
+if (isError) {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-white dark:bg-[#20262E] transition">
+      <div className="text-center">
+        <p className="text-sm text-red-500 dark:text-red-400 font-medium">
+          Failed to load data
+        </p>
+      </div>
+    </div>
+  );
+}
+
 
   return (
     <BackgroundView>

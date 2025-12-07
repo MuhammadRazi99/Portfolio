@@ -51,7 +51,7 @@ const Certificate = ({ certificate = [] }) => {
           {certificate.map(c => (
             <div
               key={c.id}
-              className="flex flex-col items-center w-[400px] h-[430px] p-4 bg-gray-100 rounded-lg shadow-md"
+              className="flex flex-col items-center w-[400px] h-[430px] p-4 bg-gray-100 dark:bg-gray-700 rounded-lg shadow-md"
             >
               {/* Image */}
               <div className="flex justify-center items-center">
@@ -62,19 +62,11 @@ const Certificate = ({ certificate = [] }) => {
                 />
               </div>
 
-              <h2 className="
-                text-l font-semibold text-center mt-4
-                line-clamp-3
-                h-[4.5rem]   /* reserve space even if 1 line */
-              ">
+              <h2 className="text-l font-semibold text-center mt-4 line-clamp-3 h-[4.5rem]">
                 {c.title}
               </h2>
 
-              <h3 className="
-                  text-sm text-center my-1 dark:text-[#ccc]
-                  line-clamp-2
-                  h-[3rem]   /* reserve space even if 1 line */
-                ">
+              <h3 className="text-sm text-center my-1 text-gray-700 dark:text-gray-300 line-clamp-2 h-[3rem]">
                 {c.issuer}
               </h3>
 

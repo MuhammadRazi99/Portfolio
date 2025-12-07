@@ -58,25 +58,17 @@ function Projects({project=[]}) {
         ? (<p>Projects are currently unavailable. Please check back soon.</p>) 
         : (<Slider {...settings} className="w-full">
           {project.map(p => (
-            <div key={p.id} className={`flex flex-col items-center p-2 bg-gray-100 w-[450px] h-[520px] rounded-lg shadow-md ${expanded[p.id]? 'overflow-y-auto':'overflow-hidden' }`}>
+            <div key={p.id} className={`flex flex-col items-center p-2 bg-gray-100 dark:bg-gray-700 w-[450px] h-[520px] rounded-lg shadow-md ${expanded[p.id]? 'overflow-y-auto':'overflow-hidden' }`}>
               
               <div className="flex justify-center items-center">
               <img src={`${baseURL}${p.first_image}`} alt={p.title} className={`w-[500px] h-[300px] rounded-lg ${expanded[p.id]?'object-contain':'object-cover'}`}/>
               </div>
               
-              <h2 className="
-                text-l font-semibold text-center mt-4
-                line-clamp-2
-                h-[3rem]   /* reserve space even if 1 line */
-              ">
+              <h2 className="text-l font-semibold text-center mt-4 line-clamp-2 h-[3rem]">
                 {p.title}
               </h2>
 
-              <h3 className="
-                  text-sm text-center my-1 dark:text-[#ccc]
-                  line-clamp-4
-                  h-[6rem]   /* reserve space even if 1 line */
-                ">
+              <h3 className="text-sm text-justify my-1 line-clamp-4 h-[6rem] text-gray-700 dark:text-gray-300">
                 {p.summary}
               </h3>
 
