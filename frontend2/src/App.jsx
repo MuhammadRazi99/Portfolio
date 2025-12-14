@@ -8,7 +8,7 @@ import BackgroundView from './Layout/BackgroundView';
 import Education from './components/Education';
 import Certificate from './components/Certificate';
 import Publication from './components/Publication';
-import ChatbotComponent from './components/chatbot';
+import ChatbotComponent from './components/Chatbot';
 import Achievement from './components/Achievement';
 
 import {
