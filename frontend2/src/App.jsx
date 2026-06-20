@@ -52,31 +52,30 @@ function App() {
     queryFn: fetchAchievements,
   });
 
-  const isLoading =
-    eduQuery.isLoading ||
-    expQuery.isLoading ||
-    projQuery.isLoading ||
-    certQuery.isLoading ||
-    pubQuery.isLoading ||
-    achQuery.isLoading;
-
-  const isError =
-    eduQuery.isError ||
-    expQuery.isError ||
-    projQuery.isError ||
-    certQuery.isError ||
-    pubQuery.isError ||
-    achQuery.isError;
+  const queries = [eduQuery, expQuery, projQuery, certQuery, pubQuery, achQuery];
+  const totalQueries = queries.length;
+  const finishedCount = queries.filter(q => q.isFetched).length;
+  const percentage = Math.round((finishedCount / totalQueries) * 100);
+  const isLoading = queries.some(q => q.isLoading);
+  const isError = queries.some(q => q.isError);
 
   if (isLoading) {
   return (
     <div className="min-h-screen flex items-center justify-center bg-white dark:bg-[#20262E] transition">
-      <div className="flex flex-col items-center gap-4">
-        {/* Spinner */}
-        <div className="w-10 h-10 rounded-full bg-[#2e8b57] dark:bg-[#2e8b57] animate-pulse"></div>
-        {/* Subtle Text */}
+      <div className="flex flex-col items-center gap-6">
+        {/* Progress Bar */}
+        <div className="w-64 h-2 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden">
+          <div
+            className="h-full bg-[#2e8b57] rounded-full transition-all duration-500 ease-out"
+            style={{ width: `${percentage}%` }}
+          ></div>
+        </div>
+        {/* Percentage Text */}
+        <p className="text-2xl font-bold text-[#2e8b57] dark:text-[#2e8b57]">
+          {percentage}%
+        </p>
         <p className="text-sm text-gray-600 dark:text-gray-300 tracking-wide">
-          Loading content...
+          Loading portfolio...
         </p>
       </div>
     </div>
